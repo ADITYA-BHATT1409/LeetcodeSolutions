@@ -1,0 +1,39 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int even=0;
+        int n= nums.length;
+        if(n==1){
+            return nums;
+        }
+        for(int i=0;i<n;i++){
+            if(nums[i]%2==0){
+                even++;
+            }
+        }
+        int left[]=new int[even];
+        int right[]=new int[n-even];
+        int j=0;
+        int k=0;
+        for(int i=0; i<n;i++){
+            if(nums[i]%2==0){
+                left[j]=nums[i];
+                j++;
+            }else{
+                right[k]=nums[i];
+                k++;
+            }
+        }
+        j=0;
+        k=0;
+        for(int i=0;i<even;i++){
+            nums[i]=left[j];
+            j++;
+        }
+        for(int i=even;i<n;i++){
+            nums[i]=right[k];
+            k++;
+        }
+        return nums;
+
+    }
+}
