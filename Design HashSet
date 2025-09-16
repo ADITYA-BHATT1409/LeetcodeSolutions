@@ -1,0 +1,21 @@
+class MyHashSet {
+    boolean HS[] =new boolean[1000001];
+    public MyHashSet() {
+        
+    }
+    
+    public void add(int key) {
+        HS[key]=true;
+        
+    }
+    
+    public void remove(int key) {
+        HS[key]=false;
+    }
+    
+    public boolean contains(int key) {
+
+        return HS[key]==true;
+           
+    }
+}
