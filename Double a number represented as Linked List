@@ -1,0 +1,32 @@
+class Solution {
+    public ListNode doubleIt(ListNode head) {
+        ListNode head1=reverse(head);
+        int carry=0;
+        ListNode prev=null;
+        ListNode temp=head1;
+        while(temp!=null){
+            int curr=temp.val*2+carry;
+            temp.val=curr%10;
+            carry=curr/10;
+            prev=temp;
+            temp=temp.next;
+        }
+        if(carry==1){
+            ListNode node=new ListNode(1);
+            prev.next=node;
+        }
+        return reverse(head1);
+    }
+    public ListNode reverse(ListNode head){
+        ListNode cur=head;
+        ListNode prev=null;
+        ListNode temp = null;
+        while(cur!=null){
+            temp=cur.next;
+            cur.next = prev;
+            prev=cur;
+            cur= temp;
+        }
+        return prev;
+    }
+}
