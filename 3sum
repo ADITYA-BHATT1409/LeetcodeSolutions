@@ -1,0 +1,36 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        ArrayList<List<Integer>> Arr=new ArrayList<List<Integer>>();
+        int n=nums.length;
+        for(int i=0;i<n-2;i++){
+            int target=-nums[i];
+            if(i>0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            int L=i+1;
+            int R=n-1;
+            while(R>L){
+                int sum=nums[L]+nums[R];
+                if(sum==target){
+                    Arr.add(Arrays.asList(nums[i],nums[L],nums[R]));
+                    while(R>L && nums[L]==nums[L+1]){
+                        L++;
+                    }
+                    while(R>L && nums[R]==nums[R-1]){
+                        R--;
+                    }
+                    L++;
+                    R--; 
+                }else if(sum<target){
+                    L++;
+                }else{
+                    R--;
+                }          
+            }
+        }
+        return Arr;
+        
+        
+    }
+}
