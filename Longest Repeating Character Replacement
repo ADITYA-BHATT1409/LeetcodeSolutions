@@ -1,0 +1,27 @@
+class Solution {
+    public int characterReplacement(String s, int k) {
+        int n=s.length();
+        int res=0;
+        for(char i='A'; i<='Z';i++){
+            int a=0,b=0,temp=0;
+            while(b<n){
+                if(s.charAt(b)==i){
+                    b++;
+                }else if(temp<k){
+                    b++;
+                    temp++;
+                    
+                }else if(s.charAt(a)==i){
+                    a++;
+                }else{
+                    a++;
+                    temp--;
+                }
+                res=Math.max(res,b-a);
+            }
+
+        }
+        return res;
+            
+    }
+}
